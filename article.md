@@ -12,7 +12,7 @@ CDK, including common setup issues and solutions
 #### How I manage development, testing, and production environments using AWS CDK, including common setup issues and solutions
 When developing applications with AWS CDK, managing multiple environments, such as development, testing, and production, is essential. Each environment typically has its own configuration and infrastructure needs. For instance, your development environment might use smaller, cost-effective resources, while production requires more reliable, scalable infrastructure.
 
-**Environment-Specific Configurations**
+Environment-Specific Configurations
 
 One common approach to managing multiple environments is through environment variables. This allows you to configure different settings for development, testing, and production environments without changing the underlying code. You can set environment-specific variables in your cdk.json or in your operating system's environment settings.
 
@@ -31,7 +31,7 @@ if (environment === 'production') {
 
 This code checks the environment variable ENV and provisions different S3 buckets based on whether the environment is production or development.
 
-**Using Stacks for Each Environment**
+Using Stacks for Each Environment
 
 AWS CDK projects can define multiple stacks to represent different environments. A stack is a logical grouping of AWS resources that CDK deploys as a unit. You can define separate stacks for development, testing, and production to ensure that each environment remains isolated and independent.
 
@@ -70,10 +70,10 @@ For instance, you might configure your pipeline to automatically deploy changes 
 
 CI/CD pipelines ensure that your deployments are consistent across environments and help prevent manual errors.
 
-#### **Common Setup Issues And How To Solve Them**
+#### Common Setup Issues And How To Solve Them
 While setting up AWS CDK, users often encounter issues that can delay their development process. Here are some of the most common problems developers face and their solutions.
 
-**1. Node.js Version Compatibility**
+1. Node.js Version Compatibility
 
 AWS CDK relies on Node.js, and sometimes, the version of Node.js installed on your machine might not be compatible with the latest CDK version. This can lead to issues when running CDK commands or when deploying infrastructure.
 
@@ -111,7 +111,7 @@ nvm use <version>
 
 After switching to a compatible version, retry running your CDK commands.
 
-**2. AWS CLI Configuration Issues**
+2. AWS CLI Configuration Issues
 
 If your AWS CLI isn't configured correctly, CDK won't be able to authenticate or interact with your AWS account. Common symptoms include errors such as "unable to locate credentials" or "access denied."
 
@@ -123,13 +123,13 @@ aws configure
 
 If you've already set up your CLI but are still encountering issues, it might be due to expired credentials, region misconfiguration, or permission problems. This is what to check
 
-**Credentials:** Make sure the credentials in \~/.aws/credentials (for Linux/macOS) or C:\\Users\\\<User\>\\.aws\\credentials (for Windows) are valid and have not expired.
+Credentials: Make sure the credentials in \~/.aws/credentials (for Linux/macOS) or C:\\Users\\\<User\>\\.aws\\credentials (for Windows) are valid and have not expired.
 
-**Region:** Ensure that the AWS region specified during configuration matches the area where you deploy your infrastructure.
+Region: Ensure that the AWS region specified during configuration matches the area where you deploy your infrastructure.
 
-**IAM Permissions:** Double-check that the IAM user or role you use has sufficient permissions to deploy CDK stacks. The user should have administrative or relevant permissions to create, modify, and delete resources.
+IAM Permissions: Double-check that the IAM user or role you use has sufficient permissions to deploy CDK stacks. The user should have administrative or relevant permissions to create, modify, and delete resources.
 
-**3. Bootstrapping Issues**
+3. Bootstrapping Issues
 
 One common issue users face is forgetting to bootstrap their AWS environment before deploying their first CDK stack. You might encounter errors like "no valid bootstrap stack found" or "cannot create resources."
 
@@ -147,7 +147,7 @@ Ensure that your IAM user has the necessary permissions.
 
 Re-run the bootstrap command.
 
-**4. Missing AWS CDK Libraries**
+4. Missing AWS CDK Libraries
 
 If you try to deploy a stack that uses specific AWS services but hasn't installed the corresponding CDK library, you will encounter errors such as "module not found" or "construct not recognized."
 
@@ -167,7 +167,7 @@ pip install aws-cdk.aws-s3
 
 After installing the required packages, retry the deployment.
 
-**5. Out-of-Date AWS CDK Version**
+5. Out-of-Date AWS CDK Version
 
 AWS CDK is updated frequently, and sometimes, you may run into issues if your version of CDK needs to be updated. This can result in errors or missing features that are available in the latest version.
 
@@ -185,7 +185,7 @@ npm install -g aws-cdk
 
 Suppose your project's dependencies are also outdated. In that case, you can update them by modifying the package.json (for TypeScript) or requirements.txt (for Python) file to reference the latest version of CDK libraries and then run npm install or pip install.
 
-**6. Stack Deployment Fails Due to Permissions**
+6. Stack Deployment Fails Due to Permissions
 
 CDK deployment might fail due to insufficient permissions in your AWS account. For example, if you are deploying a Lambda function and your IAM role does not have sufficient permissions, deployment will fail with an error related to IAM or Lambda.
 
@@ -197,24 +197,24 @@ Use a more restrictive policy that grants only the necessary permissions for the
 
 To check permissions, go to the IAM console and find the role or user associated with your deployment. Ensure the necessary permissions are attached to that user or role.
 
-**7. CloudFormation Stack Rollback Errors**
+7. CloudFormation Stack Rollback Errors
 
 Sometimes, a CloudFormation stack may start deploying, but due to an error in the resource configuration (such as referencing an unavailable EC2 instance type), it will enter a rollback state. This can cause CDK deployments to fail.
 
 When a stack fails, the first step is to check the CloudFormation console for error messages. The console provides detailed logs of what went wrong. Common issues include:
 
-- **Incorrect resource configuration:** Check the failed resource and ensure you use valid values (e.g., correct EC2 instance types, VPC IDs, etc.).
-- **Timeouts:** If your settings are not properly configured, some resources, like EC2 instances, might time out during creation. Double-check your settings.
+- Incorrect resource configuration: Check the failed resource and ensure you use valid values (e.g., correct EC2 instance types, VPC IDs, etc.).
+- Timeouts: If your settings are not properly configured, some resources, like EC2 instances, might time out during creation. Double-check your settings.
 
 Once you've identified the problem, either fix it in your CDK code and retry the deployment or manually delete the failed stack from the CloudFormation console before redeploying.
 
-**8. Virtual Environment Issues in Python**
+8. Virtual Environment Issues in Python
 
 When using CDK with Python, if you need to remember to activate your virtual environment, you might run into issues where dependencies are not found or incorrect versions of libraries are used.
 
 Always activate your virtual environment before working with a Python CDK project.
 
-**9. Incorrect Region or Account Settings**
+9. Incorrect Region or Account Settings
 
 A common mistake is deploying to the wrong AWS region or using the wrong AWS account, especially when working in multi-account environments. This can lead to resources being created in unintended places or deployments failing due to missing resources in the target region.
 

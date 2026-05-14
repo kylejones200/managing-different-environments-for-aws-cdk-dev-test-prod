@@ -1,7 +1,7 @@
 # Managing different environments for AWS CDK Dev Test Prod
 
-**Published:** 2024-09-30
-**Medium:** [https://medium.com/@kyle-t-jones/managing-different-environments-for-aws-cdk-dev-test-prod-3ce6336bb7c0](https://medium.com/@kyle-t-jones/managing-different-environments-for-aws-cdk-dev-test-prod-3ce6336bb7c0)
+Published: 2024-09-30
+Medium: [https://medium.com/@kyle-t-jones/managing-different-environments-for-aws-cdk-dev-test-prod-3ce6336bb7c0](https://medium.com/@kyle-t-jones/managing-different-environments-for-aws-cdk-dev-test-prod-3ce6336bb7c0)
 
 ## About
 
